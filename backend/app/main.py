@@ -1,10 +1,27 @@
 from services.chat_service import ChatService
+import time
 
-assistant = ChatService()
 
-question = input("You: ")
+def main():
+    assistant = ChatService()
 
-answer = assistant.ask(question)
+    while True:
+        question = input("\nYou: ")
 
-print("\nMistral:\n")
-print(answer)
+        if question.lower() == "exit":
+            break
+
+        start = time.time()
+
+        answer = assistant.ask(question)
+
+        end = time.time()
+
+        print("\nMistral:\n")
+        print(answer)
+
+        print(f"\nResponse time: {end-start:.2f} seconds")
+
+
+if __name__ == "__main__":
+    main()
