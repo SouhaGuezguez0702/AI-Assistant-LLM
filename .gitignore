@@ -1,13 +1,16 @@
 # Virtual Environment
 venv/
+.venv/
 
 # Python
 __pycache__/
 *.py[cod]
 *.pyo
 
-# Environment Variables
+# Environment Variables and Secrets
 .env
+.env.*
+!.env.example
 
 # VS Code
 .vscode/
@@ -16,7 +19,23 @@ __pycache__/
 *.log
 
 # Streamlit
-.streamlit/
+.streamlit/secrets.toml
 
-# macOS
+# Vector Database and Generated Data
+chroma_db/
+data/chroma_db/
+data/vectorstore/
+
+# Testing and Cache
+.pytest_cache/
+.mypy_cache/
+
+# OS Files
 .DS_Store
+Thumbs.db
+
+# Local user database
+data/users.db
+
+# Local medical documents
+data/documents/

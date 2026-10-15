@@ -1,27 +1,12 @@
-from services.chat_service import ChatService
-import time
+from fastapi import FastAPI
+from backend.app.api.chat import router
 
 
-def main():
-    assistant = ChatService()
-
-    while True:
-        question = input("\nYou: ")
-
-        if question.lower() == "exit":
-            break
-
-        start = time.time()
-
-        answer = assistant.ask(question)
-
-        end = time.time()
-
-        print("\nMistral:\n")
-        print(answer)
-
-        print(f"\nResponse time: {end-start:.2f} seconds")
+app = FastAPI(
+    title="AI Assistant API",
+    description="Backend API using Ollama and Mistral 7B",
+    version="1.0.0"
+)
 
 
-if __name__ == "__main__":
-    main()
+app.include_router(router)
